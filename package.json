@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moons-id/node-sql-migrator.git"
+    "url": "git+https://github.com/moons-id/ts-node-sql-migrator.git"
   },
   "keywords": [
     "migration"

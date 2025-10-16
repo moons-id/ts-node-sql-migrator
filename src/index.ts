@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import {join} from 'path';
-import {Pool} from "pg";
+import {Pool, PoolClient, PoolConfig} from "pg";
 import 'dotenv/config'
 
 function getArg(key: string, defaultValue = "") {
@@ -28,14 +28,19 @@ async function runMigrations() {
   try {
     let pg: Pool | null = null;
     if (action !== 'new') {
-      pg = new Pool({
+      const pgConfig: PoolConfig = {
         host: process.env.PG_HOST,
         port: Number(process.env.PG_PORT),
         password: process.env.PG_PASS,
         user: process.env.PG_USER,
         database: process.env.PG_DB,
-      })
+      }
 
+      if (process.env.PG_CA?.length) {
+        pgConfig.ssl = { ca: process.env.PG_CA }
+      }
+
+      pg = new Pool(pgConfig)
       await pg.query(`CREATE TABLE IF NOT EXISTS node_migrator_${type}s (
         id BIGSERIAL PRIMARY KEY,
         version VARCHAR(255) NOT NULL,
