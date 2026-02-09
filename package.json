@@ -1,6 +1,6 @@
 {
   "name": "@dogulabs/sql-migrator",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
@@ -16,7 +16,13 @@
     "url": "git+https://github.com/moons-id/ts-node-sql-migrator.git"
   },
   "keywords": [
-    "migration"
+    "migration",
+    "postgresql",
+    "postgres",
+    "sql",
+    "database",
+    "migrator",
+    "clickhouse"
   ],
   "author": "rizkynovando@gmail.com",
   "license": "GPL-3.0-or-later",
@@ -26,12 +32,15 @@
   "homepage": "https://github.com/moons-id/node-sql-migrator#readme",
   "description": "",
   "dependencies": {
+    "@clickhouse/client": "^1.17.0",
     "@types/pg": "^8.15.5",
     "dotenv": "^17.2.2",
+    "node-vault-client": "^1.0.2",
     "pg": "^8.16.3"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "@types/node-vault-client": "^1.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.0"
   }
