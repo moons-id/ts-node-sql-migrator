@@ -5,6 +5,7 @@ import { migrateDownPg } from "./migrate-down.pg.js";
 import { migrateResetPg } from "./migrate-reset.pg.js";
 import { generateMigrationCommon } from "../common/generate-migration.common.js";
 import { envConfig } from "../../config/config.js";
+import { join } from "path";
 
 
 export async function pg(type: string, action: string, name: string) {
