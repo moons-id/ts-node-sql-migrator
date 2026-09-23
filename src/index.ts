@@ -3,6 +3,7 @@
 import 'dotenv/config'
 import { pg } from "./module/pg/pg.js";
 import { ch } from "./module/ch/ch.js";
+import { sqlite } from "./module/sqlite/sqlite.js";
 import { loadVaultConfig } from "./config/config.js";
 
 
@@ -25,6 +26,9 @@ async function runMigrations() {
       break;
     case "postgres":
       await pg(type, action, name);
+      break;
+    case "sqlite":
+      await sqlite(type, action, name);
       break;
     default:
       await ch(type, action, name);

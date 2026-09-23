@@ -6,6 +6,11 @@ dotenv.config();
 type EnvConfig = {
   pg: PgConfig;
   clickHouse: ClickHouseConfig;
+  sqlite: SqliteConfig;
+}
+
+type SqliteConfig = {
+  path: string;
 }
 
 type PgConfig = {
@@ -25,6 +30,10 @@ type ClickHouseConfig = {
   pass: string;
   user: string;
   ssl: boolean;
+}
+
+const sqliteConfig: SqliteConfig = {
+  path: process.env.SQLITE_PATH || './db.sqlite',
 }
 
 const pgConfig: PgConfig = {
@@ -49,6 +58,7 @@ const clickHouseConfig: ClickHouseConfig = {
 export const envConfig: EnvConfig = {
   pg: pgConfig,
   clickHouse: clickHouseConfig,
+  sqlite: sqliteConfig,
 };
 
 
